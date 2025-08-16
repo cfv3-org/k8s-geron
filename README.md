@@ -1,4 +1,4 @@
-# Geron Cluster on Talos Linux (v1.8.1)
+# Geron Cluster on Talos Linux
 
 This repository contains **Makefile automation** and configuration files for deploying and managing the **Geron Kubernetes cluster** on [Talos Linux](https://www.talos.dev).  
 It standardizes the workflow for generating secrets, creating Talos configs, applying them to nodes, and bootstrapping Kubernetes.
@@ -7,7 +7,7 @@ It standardizes the workflow for generating secrets, creating Talos configs, app
 
 ## Prerequisites
 
-- [talosctl](https://www.talos.dev/v1.8/talosctl/installation/) installed locally.
+- [talosctl](https://www.talos.dev/v1.10/talos-guides/install/talosctl/) installed locally.
 - `nodes.ini` configured with your control-plane and worker nodes:
   ```ini
   [control-plane]
@@ -42,13 +42,13 @@ The **Makefile** automates the cluster setup. The main steps:
 
 ```mermaid
 flowchart TD
-    A[Generate Secrets\nmake secrets] --> B[Generate Configs\nmake config]
-    B --> C[Configure Talos Client\nmake configure]
-    C --> D[Apply Control-Plane Config\nmake apply-control-plane]
-    C --> E[Apply Worker Config\nmake apply-workers]
-    D --> F[Bootstrap Cluster\nmake bootstrap]
-    F --> G[Generate kubeconfig\nmake kube-config]
-    G --> H[Use kubectl\nkubectl get nodes]
+    A[Generate Secrets] --> B[Generate Configs]
+    B --> C[Configure Talos Client]
+    C --> D[Apply Control-Plane Config]
+    C --> E[Apply Worker Config]
+    D --> F[Bootstrap Cluster]
+    F --> G[Generate kubeconfig]
+    G --> H[Use kubectl]
 ```
 
 ---
@@ -176,7 +176,7 @@ make kube-config
 Upgrades are **not automated in the Makefile**, but can be done manually:
 
 ```sh
-talosctl upgrade   --nodes 10.10.0.7   --image ghcr.io/siderolabs/installer:v1.8.1   --talosconfig manifests/talosconfig
+talosctl upgrade --nodes 10.10.0.7 --image ghcr.io/siderolabs/installer:v1.10.6 --talosconfig manifests/talosconfig
 ```
 
 ---

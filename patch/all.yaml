@@ -1,0 +1,16 @@
+---
+debug: true
+machine:
+  install:
+    disk: /dev/sda
+    wipe: true
+  network:
+    interfaces:
+      - interface: eth0
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 100
+      - interface: eth1
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 200

@@ -1,0 +1,6 @@
+secrets.yaml
+nodes.ini
+manifests/config
+manifests/talosconfig
+manifests/controlplane.yaml
+manifests/worker.yaml
